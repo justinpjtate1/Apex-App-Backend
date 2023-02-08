@@ -19,11 +19,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/nonisaurus/Apex-App-Backend.git"
+    "url": "git+https://github.com/AZ-LCA/Apex-App-Backend.git"
   },
   "bugs": {
-    "url": "https://github.com/nonisaurus/Apex-App-Backend/issues"
+    "url": "https://github.com/AZ-LCA/Apex-App-Backend/issues"
   },
-  "homepage": "https://github.com/nonisaurus/Apex-App-Backend#readme",
+  "homepage": "https://github.com/AZ-LCA/Apex-App-Backend#readme",
+
   "description": ""
 }
