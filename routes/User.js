@@ -1,7 +1,7 @@
 // Require necessary NPM Packages
 const express = require('express');
 
-// Require Mongoose Model for user
+// Require Mongoose Model for User
 const User = require('./../models/User');
 
 // Instantiate a Router (mini app that only handles routes)
