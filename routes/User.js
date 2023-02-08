@@ -1,7 +1,7 @@
 // Require necessary NPM Packages
 const express = require('express');
 
-// Require Mongoose Model for Article
+// Require Mongoose Model for User
 const User = require('./../models/User');
 
 // Instantiate a Router (mini app that only handles routes)
@@ -18,7 +18,7 @@ router.get('/api/user/:userID', (req, res) => {
     User.findById(req.params.userID)
     .then((user) => {
         if (user) {
-            res.status(200).json({ article: article });
+            res.status(200).json({ user: user });
         } else {
             // If cannot find a document with a matching ID
             res.status(404).json({
