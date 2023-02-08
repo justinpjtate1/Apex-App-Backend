@@ -10,7 +10,7 @@ const router = express.Router();
 // URI: /weapons
 // Description: Get All Weapons
 
-router.get('/weapons', (req, res) => {
+router.get('/api/weapons', (req, res) => {
     Weapon.find()
     .then((weapons) => {
         res.status(200).json({ weapons: weapons});
@@ -25,7 +25,7 @@ router.get('/weapons', (req, res) => {
 // URI: /weapons/:id
 // Description: Get a specific weapon
 
-router.get('/weapons/:id', (req, res) => {
+router.get('/api/weapons/:id', (req, res) => {
     Weapon.findById(req.params.id)
     .then((weapon) => {
         res.status(200).json({ weapon: weapon });
