@@ -1,10 +1,10 @@
 {
   "name": "apex-app-backend",
   "version": "1.0.0",
-  "description": "",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "author": "",
   "license": "ISC",
@@ -16,5 +16,14 @@
     "mongoose": "^6.9.1",
     "passport": "^0.6.0",
     "passport-jwt": "^4.0.1"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nonisaurus/Apex-App-Backend.git"
+  },
+  "bugs": {
+    "url": "https://github.com/nonisaurus/Apex-App-Backend/issues"
+  },
+  "homepage": "https://github.com/nonisaurus/Apex-App-Backend#readme",
+  "description": ""
 }
