@@ -34,3 +34,5 @@ router.get('/api/weapons/:id', (req, res) => {
         res.status(500).json({ error: error });
     })
 })
+
+module.exports = router;

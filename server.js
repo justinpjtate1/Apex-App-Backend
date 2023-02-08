@@ -22,6 +22,9 @@ mongoose.connection.once('open', () => {
 // Rounds of salting
 
 // Require route files
+const generalChatRouter = require('./routes/GeneralChat');
+const userRouter = require('./routes/User');
+const weaponRouter = require('./routes/Weapon');
 
 // Instantiate express app obj
 const app = express();
@@ -43,6 +46,9 @@ app.use(cors({
 
 // Routes
 // Mount imported Routers
+app.use(generalChatRouter);
+app.use(userRouter);
+app.use(weaponRouter);
 
 // Authentication
 
