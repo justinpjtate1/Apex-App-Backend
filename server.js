@@ -18,8 +18,11 @@ mongoose.connection.once('open', () => {
 });
 
 // Require passport strat + opt
+const strategy = require('./lib/passportStrategy');
+const jwtOptions = require('./lib/passportOptions');
 
 // Rounds of salting
+const saltRounds = 10;
 
 // Require route files
 const generalChatRouter = require('./routes/GeneralChat');
@@ -43,6 +46,7 @@ app.use(cors({
   }));
 
 // Define our auth strategy from before
+passport.use(strategy)
 
 // Routes
 // Mount imported Routers
