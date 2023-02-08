@@ -3,7 +3,6 @@ const mongoose = require('mongoose');
 
 const weaponSchema = new mongoose.Schema({
     weaponName: { type: String, required: true },
-    rarity: { type: String },
     weaponImg: { type: String },
     weaponType: { type: String, required: true },
     stats: {
