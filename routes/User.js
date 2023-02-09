@@ -74,6 +74,8 @@ Method:        POST
 URI:        /api/user
 Description:    Create A New User
 */
+// ADD A CHECK THAT CHECKS IF THE USERNAME OF THE NEW USER IS ALREADY USED BY ANOTHER USER
+
 // Rounds of salting
 const saltRounds = 10;
 router.post('/api/user', (req,res) => {

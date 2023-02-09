@@ -28,6 +28,7 @@ const saltRounds = 10;
 const generalChatRouter = require('./routes/GeneralChat');
 const userRouter = require('./routes/User');
 const weaponRouter = require('./routes/Weapon');
+const authRouter = require('./routes/Auth');
 
 // Instantiate express app obj
 const app = express();
@@ -37,7 +38,6 @@ const port = process.env.PORT || 5001;
 const reactPort = 3000;
 
 // Middleware
-
 app.use(express.json());
 
 // Set up CORS headers
@@ -55,6 +55,7 @@ app.use(userRouter);
 app.use(weaponRouter);
 
 // Authentication
+app.use(authRouter);
 
 // Start the server and listen for requests on the given port
 app.listen(port, () => {console.log(`blogy is listening on port ${port}`)});
