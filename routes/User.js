@@ -13,9 +13,10 @@ Method:        GET
 URI:        /api/user/:userID
 Description:    Get user
 */
-
+// dummy user id "63e4be0ba314d02ef53659b4"
 router.get('/api/user/:userID', (req, res) => {
     User.findById(req.params.userID)
+    .populate('favoriteWeapons')
     .then((user) => {
         if (user) {
             res.status(200).json({ user: user });
