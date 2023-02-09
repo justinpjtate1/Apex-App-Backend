@@ -1,6 +1,6 @@
 // Require necessary NPM Packages
 const express = require('express');
-
+const bcrypt = require('bcrypt');
 // Require Mongoose Model for User
 const User = require('./../models/User');
 
@@ -74,26 +74,35 @@ Method:        POST
 URI:        /api/user
 Description:    Create A New User
 */
-
+// Rounds of salting
+const saltRounds = 10;
 router.post('/api/user', (req,res) => {
-    User.create(req.body.user)
-    // On successful create action respond with 201
-    // and content of new User
-    .then((newUser) => {
-        // Check that the username and password are all of correct length
-        if (newUser.username.length >= 8 && newUser.username.length <= 20 && newUser.password.length >= 8 && newUser.password.length <= 20 ) {
-            res.status(201).json({ newUser: newUser });
-        } else {
-            res.status(406).json({ error: {
-                name: 'UsernameAndPasswordLengthsWrong',
-                message: 'Username and Password must be between 8-20 characters (inclusive)'
-            }});
-        }
-    })
-    // Catch any errors that might occur
-    .catch((error) => {
-        res.status(500).json({ error: error });
-    });
+    if (req.body.user.username.length >=8 && req.body.user.username.length <=20 && req.body.user.password.length >= 8 && req.body.user.password.length <=20) {
+        const { username, password } =req.body.user;
+        bcrypt.hash(password, saltRounds).then((hash) => {
+            User.create({
+                username: username,
+                password: hash
+            })
+        })
+        // On successful create action respond with 201
+        // and content of new User
+        .then(() => {
+            // Check that the username and password are all of correct length
+            res.status(201).end();
+        })
+        // Catch any errors that might occur
+        .catch((error) => {
+            res.status(500).json({ error: error });
+        });
+    }
+    else {
+        res.status(406).json({ error: {
+            name: 'UsernameAndPasswordLengthsWrong',
+            message: 'Username and Password must be between 8-20 characters (inclusive)'
+        }});
+    }
+
 })
 
 /*
