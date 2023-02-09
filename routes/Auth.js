@@ -59,7 +59,7 @@ router.post('/api/login', (req, res) => {
                         });
                     }
                     if (error) {
-                        res.status(500).json( { message: `Big ${error}` } )
+                        res.status(500).json( { message: `Big error: ${error}` } )
                     }
                 })
             })

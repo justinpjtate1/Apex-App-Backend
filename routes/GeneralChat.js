@@ -1,5 +1,6 @@
 // Require neccessary NPM Package
 const express = require('express');
+const passport = require('passport');
 
 // Require Mongoose Model for Article
 const GeneralChat = require('./../models/GeneralChat')
@@ -13,7 +14,7 @@ const router = express.Router()
  * URI:             /api/generalchat
  * Description:     Get all comments
  */
-router.get('/api/generalchat', (req, res) => {
+router.get('/api/generalchat', passport.authenticate('jwt', { session: false }), (req, res) => {
     GeneralChat.find()
     .populate('userId')
     // Return all comments as an Array
@@ -33,7 +34,7 @@ router.get('/api/generalchat', (req, res) => {
  * Description:     Get a comment by its ID
  */
 
-router.get('/api/generalchat/:id', (req, res) => {
+router.get('/api/generalchat/:id', passport.authenticate('jwt', { session: false }), (req, res) => {
     GeneralChat.findById(req.params.id)
     .populate('userId')
     .then((comment) => {
@@ -61,7 +62,7 @@ router.get('/api/generalchat/:id', (req, res) => {
  * Description:     Delete a comment by its ID
  */
 
-router.delete('/api/generalchat/:id', (req, res) => {
+router.delete('/api/generalchat/:id', passport.authenticate('jwt', { session: false }), (req, res) => {
     GeneralChat.findById(req.params.id)
     .then((comment) => {
         if(comment){
@@ -97,7 +98,7 @@ router.delete('/api/generalchat/:id', (req, res) => {
  * URI:             /api/generalchat/:id
  * Description:     Update a comment by its ID
  */
-router.put('/api/generalchat/:id', (req, res) => {
+router.put('/api/generalchat/:id', passport.authenticate('jwt', { session: false }), (req, res) => {
     GeneralChat.findById(req.params.id)
     .then((comment) => {
         if(comment){
@@ -131,7 +132,7 @@ router.put('/api/generalchat/:id', (req, res) => {
  */
 
 // dummy user id 63e4be0ba314d02ef53659b4
-router.post('/api/generalchat', (req, res) => {
+router.post('/api/generalchat', passport.authenticate('jwt', { session: false }), (req, res) => {
     GeneralChat.create(req.body.comment)
     .then((comment) => {
         // if successful

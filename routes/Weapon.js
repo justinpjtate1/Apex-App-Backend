@@ -1,5 +1,5 @@
-const { response } = require('express');
 const express = require('express');
+const passport = require('passport');
 
 const Weapon = require('../models/Weapon');
 
@@ -10,7 +10,7 @@ const router = express.Router();
 // URI: /api/weapons
 // Description: Get All Weapons
 
-router.get('/api/weapons', (req, res) => {
+router.get('/api/weapons', passport.authenticate('jwt', { session: false }), (req, res) => {
     Weapon.find()
     .then((weapons) => {
         res.status(200).json({ weapons: weapons});
@@ -25,7 +25,7 @@ router.get('/api/weapons', (req, res) => {
 // URI: /api/weapons/:id
 // Description: Get a specific weapon
 
-router.get('/api/weapons/:id', (req, res) => {
+router.get('/api/weapons/:id', passport.authenticate('jwt', { session: false }), (req, res) => {
     Weapon.findById(req.params.id)
     .then((weapon) => {
         res.status(200).json({ weapon: weapon });
@@ -40,7 +40,7 @@ router.get('/api/weapons/:id', (req, res) => {
 // URI: /api/weapons/seed/data
 // Description: add seed weapons
 
-router.post('/api/weapons/seed/data', (req, res) => {
+router.post('/api/weapons/seed/data', passport.authenticate('jwt', { session: false }), (req, res) => {
     const weapons = [
         {
             weaponName: 'HAVOC Rifle',

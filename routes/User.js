@@ -1,6 +1,7 @@
 // Require necessary NPM Packages
 const express = require('express');
 const bcrypt = require('bcrypt');
+const passport = require('passport');
 // Require Mongoose Model for User
 const User = require('./../models/User');
 
@@ -13,8 +14,7 @@ Method:        GET
 URI:        /api/user/:userID
 Description:    Get user
 */
-// dummy user id "63e4be0ba314d02ef53659b4"
-router.get('/api/user/:userID', (req, res) => {
+router.get('/api/user/:userID', passport.authenticate('jwt', { session: false }), (req, res) => {
     User.findById(req.params.userID)
     .populate('favoriteWeapons')
     .then((user) => {
@@ -42,7 +42,7 @@ URI:        /api/user/:userID
 Description:    Delete user via user id
 */
 
-router.delete('/api/user/:userID', (req,res) => {
+router.delete('/api/user/:userID', passport.authenticate('jwt', { session: false }), (req,res) => {
     User.findById(req.params.userID)
     .then((user) => {
         if (user) {
@@ -113,7 +113,7 @@ Method:        PUT/PATCH
 URI:        /api/user/:userID
 Description:    Update user by user ID
 */
-router.patch('/api/user/:userID', (req, res) => {
+router.patch('/api/user/:userID', passport.authenticate('jwt', { session: false }), (req, res) => {
     User.findById(req.params.userID)
       .then((user) => {
         if (user) {
