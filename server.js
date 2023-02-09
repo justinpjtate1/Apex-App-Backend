@@ -1,3 +1,4 @@
+require('dotenv').config()
 // Require the necessary NPM packages
 const express = require('express');
 const mongoose = require('mongoose');
@@ -19,10 +20,6 @@ mongoose.connection.once('open', () => {
 
 // Require passport strat + opt
 const strategy = require('./lib/passportStrategy');
-const jwtOptions = require('./lib/passportOptions');
-
-// Rounds of salting
-const saltRounds = 10;
 
 // Require route files
 const generalChatRouter = require('./routes/GeneralChat');

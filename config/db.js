@@ -1,3 +1,4 @@
+require('dotenv').config()
 // Create db name for mongoDB
 const mongooseDBName = 'apexLegendsApp';
 
