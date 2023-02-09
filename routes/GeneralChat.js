@@ -2,7 +2,7 @@
 const express = require('express');
 
 // Require Mongoose Model for Article
-const GeneralChat = require('../models/GeneralChat')
+const GeneralChat = require('./../models/GeneralChat')
 
 // Instantiate a Router
 const router = express.Router()
@@ -15,6 +15,7 @@ const router = express.Router()
  */
 router.get('/api/generalchat', (req, res) => {
     GeneralChat.find()
+    .populate('userId')
     // Return all comments as an Array
     .then((comment) => {
       res.status(200).json({ comment: comment });
@@ -24,25 +25,6 @@ router.get('/api/generalchat', (req, res) => {
       res.status(500).json({ error: error });
     });
   });
-  
-
-
-/**
- * Action:          INDEX
- * Method:          GET
- * URI:             /api/generalchat
- * Description:     Get all comments
- */
-router.get('/api/generalchat', (req, res) => {
-    GeneralChat.find()
-    .then((comment) => {
-      res.status(200).json({ comment: comment });
-    })
-    .catch((error) => {
-      res.status(500).json({ error: error });
-    });
-  });
-
 
 /**
  * Action:          SHOW
@@ -50,8 +32,10 @@ router.get('/api/generalchat', (req, res) => {
  * URI:             /api/generalchat/:id
  * Description:     Get a comment by its ID
  */
+
 router.get('/api/generalchat/:id', (req, res) => {
     GeneralChat.findById(req.params.id)
+    .populate('userId')
     .then((comment) => {
         if(comment){
             res.status(200).json({ comment: comment });
@@ -76,7 +60,8 @@ router.get('/api/generalchat/:id', (req, res) => {
  * URI:             /api/generalchat/:id
  * Description:     Delete a comment by its ID
  */
-router.delete('/api//generalchat/:id', (req, res) => {
+
+router.delete('/api/generalchat/:id', (req, res) => {
     GeneralChat.findById(req.params.id)
     .then((comment) => {
         if(comment){
@@ -144,11 +129,13 @@ router.put('/api/generalchat/:id', (req, res) => {
  * URI:             /api/generalchat
  * Description:     Create a comment
  */
-router.get('/api/generalchat/:id', (req, res) => {
-    GeneralChat.create(req.params.comment)
+
+// dummy user id 63e4be0ba314d02ef53659b4
+router.post('/api/generalchat', (req, res) => {
+    GeneralChat.create(req.body.comment)
     .then((comment) => {
         // if successful
-        res.status(201).json({comment: newComment})
+        res.status(201).json({comment: comment})
     })
     .catch((error) => {
       res.status(500).json({ error: error });
