@@ -44,7 +44,7 @@ router.post('/api/weapons/seed/data', passport.authenticate('jwt', { session: fa
     const weapons = [
         {
             weaponName: 'HAVOC Rifle',
-            weaponImg: './weapon_images/HAVOC_Rifle.webp',
+            weaponImg: '/weapon_images/HAVOC_Rifle.webp',
             weaponType: 'Assault Rifle',
             stats: {
                 ammoType: 'energy',
@@ -54,7 +54,7 @@ router.post('/api/weapons/seed/data', passport.authenticate('jwt', { session: fa
         },
         {
             weaponName: 'VK-47 Flatline',
-            weaponImg: './weapon_images/VK-47_Flatline.webp',
+            weaponImg: '/weapon_images/VK-47_Flatline.webp',
             weaponType: 'Assault Rifle',
             stats: {
                 ammoType: 'heavy',
@@ -64,7 +64,7 @@ router.post('/api/weapons/seed/data', passport.authenticate('jwt', { session: fa
         },
         {
             weaponName: 'Hemlok Burst AR',
-            weaponImg: './weapon_images/Hemlok_Burst_AR.webp',
+            weaponImg: '/weapon_images/Hemlok_Burst_AR.webp',
             weaponType: 'Assault Rifle',
             stats: {
                 ammoType: 'heavy',
@@ -74,7 +74,7 @@ router.post('/api/weapons/seed/data', passport.authenticate('jwt', { session: fa
         },
         {
             weaponName: 'R-301 Carbine',
-            weaponImg: './weapon_images/R-301_Carbine.webp',
+            weaponImg: '/weapon_images/R-301_Carbine.webp',
             weaponType: 'Assault Rifle',
             stats: {
                 ammoType: 'light',
@@ -84,7 +84,7 @@ router.post('/api/weapons/seed/data', passport.authenticate('jwt', { session: fa
         },
         {
             weaponName: 'Alternator SMG',
-            weaponImg: './weapon_images/Alternator_SMG.webp',
+            weaponImg: '/weapon_images/Alternator_SMG.webp',
             weaponType: 'SMG',
             stats: {
                 ammoType: 'light',
@@ -94,7 +94,7 @@ router.post('/api/weapons/seed/data', passport.authenticate('jwt', { session: fa
         },
         {
             weaponName: 'Prowler Burst PDW',
-            weaponImg: './weapon_images/Prowler_Burst_PDW.webp',
+            weaponImg: '/weapon_images/Prowler_Burst_PDW.webp',
             weaponType: 'SMG',
             stats: {
                 ammoType: 'heavy',
@@ -104,7 +104,7 @@ router.post('/api/weapons/seed/data', passport.authenticate('jwt', { session: fa
         },
         {
             weaponName: 'R-99 SMG',
-            weaponImg: './weapon_images/R-99_SMG.webp',
+            weaponImg: '/weapon_images/R-99_SMG.webp',
             weaponType: 'SMG',
             stats: {
                 ammoType: 'light',
@@ -114,7 +114,7 @@ router.post('/api/weapons/seed/data', passport.authenticate('jwt', { session: fa
         },
         {
             weaponName: 'Volt SMG',
-            weaponImg: './weapon_images/Volt_SMG.webp',
+            weaponImg: '/weapon_images/Volt_SMG.webp',
             weaponType: 'SMG',
             stats: {
                 ammoType: 'energy',
@@ -124,7 +124,7 @@ router.post('/api/weapons/seed/data', passport.authenticate('jwt', { session: fa
         },
         {
             weaponName: 'C.A.R. SMG',
-            weaponImg: './weapon_images/C.A.R._SMG.webp',
+            weaponImg: '/weapon_images/C.A.R._SMG.webp',
             weaponType: 'SMG',
             stats: {
                 ammoType: 'heavy',
@@ -134,7 +134,7 @@ router.post('/api/weapons/seed/data', passport.authenticate('jwt', { session: fa
         },
         {
             weaponName: 'Devotion LMG',
-            weaponImg: './weapon_images/Devotion_LMG.webp',
+            weaponImg: '/weapon_images/Devotion_LMG.webp',
             weaponType: 'LMG',
             stats: {
                 ammoType: 'energy',
@@ -144,7 +144,7 @@ router.post('/api/weapons/seed/data', passport.authenticate('jwt', { session: fa
         },
         {
             weaponName: 'L-STAR EMG',
-            weaponImg: './weapon_images/L-STAR_EMG.webp',
+            weaponImg: '/weapon_images/L-STAR_EMG.webp',
             weaponType: 'LMG',
             stats: {
                 ammoType: 'energy',
@@ -154,7 +154,7 @@ router.post('/api/weapons/seed/data', passport.authenticate('jwt', { session: fa
         },
         {
             weaponName: 'M600 Spitfire',
-            weaponImg: './weapon_images/M600_Spitfire.webp',
+            weaponImg: '/weapon_images/M600_Spitfire.webp',
             weaponType: 'LMG',
             stats: {
                 ammoType: 'heavy',
@@ -164,7 +164,7 @@ router.post('/api/weapons/seed/data', passport.authenticate('jwt', { session: fa
         },
         {
             weaponName: 'Rampage LMG',
-            weaponImg: './weapon_images/Rampage_LMG.webp',
+            weaponImg: '/weapon_images/Rampage_LMG.webp',
             weaponType: 'LMG',
             stats: {
                 ammoType: 'special',
@@ -174,7 +174,7 @@ router.post('/api/weapons/seed/data', passport.authenticate('jwt', { session: fa
         },
         {
             weaponName: 'G7 Scout',
-            weaponImg: './weapon_images/G7_Scout.webp',
+            weaponImg: '/weapon_images/G7_Scout.webp',
             weaponType: 'Marksman',
             stats: {
                 ammoType: 'light',
@@ -184,7 +184,7 @@ router.post('/api/weapons/seed/data', passport.authenticate('jwt', { session: fa
         },
         {
             weaponName: 'Triple Take',
-            weaponImg: './weapon_images/Triple_Take.webp',
+            weaponImg: '/weapon_images/Triple_Take.webp',
             weaponType: 'Marksman',
             stats: {
                 ammoType: 'energy',
@@ -194,7 +194,7 @@ router.post('/api/weapons/seed/data', passport.authenticate('jwt', { session: fa
         },
         {
             weaponName: '30-30 Repeater',
-            weaponImg: './weapon_images/30-30_Repeater.webp',
+            weaponImg: '/weapon_images/30-30_Repeater.webp',
             weaponType: 'Marksman',
             stats: {
                 ammoType: 'heavy',
@@ -204,7 +204,7 @@ router.post('/api/weapons/seed/data', passport.authenticate('jwt', { session: fa
         },
         {
             weaponName: 'Bocek Compound Bow',
-            weaponImg: './weapon_images/Bocek_Compound_Bow.webp',
+            weaponImg: '/weapon_images/Bocek_Compound_Bow.webp',
             weaponType: 'Marksman',
             stats: {
                 ammoType: 'sniper',
@@ -214,7 +214,7 @@ router.post('/api/weapons/seed/data', passport.authenticate('jwt', { session: fa
         },
         {
             weaponName: 'Charge Rifle',
-            weaponImg: './weapon_images/Charge_Rifle.webp',
+            weaponImg: '/weapon_images/Charge_Rifle.webp',
             weaponType: 'Sniper',
             stats: {
                 ammoType: 'sniper',
@@ -224,7 +224,7 @@ router.post('/api/weapons/seed/data', passport.authenticate('jwt', { session: fa
         },
         {
             weaponName: 'Longbow DMR',
-            weaponImg: './weapon_images/Longbow_DMR.webp',
+            weaponImg: '/weapon_images/Longbow_DMR.webp',
             weaponType: 'Sniper',
             stats: {
                 ammoType: 'sniper',
@@ -234,7 +234,7 @@ router.post('/api/weapons/seed/data', passport.authenticate('jwt', { session: fa
         },
         {
             weaponName: 'Kraber .50-Cal Sniper',
-            weaponImg: './weapon_images/Kraber_.50-Cal_Sniper.webp',
+            weaponImg: '/weapon_images/Kraber_.50-Cal_Sniper.webp',
             weaponType: 'Sniper',
             stats: {
                 ammoType: 'special',
@@ -244,7 +244,7 @@ router.post('/api/weapons/seed/data', passport.authenticate('jwt', { session: fa
         },
         {
             weaponName: 'Sentinel',
-            weaponImg: './weapon_images/Sentinel.webp',
+            weaponImg: '/weapon_images/Sentinel.webp',
             weaponType: 'Sniper',
             stats: {
                 ammoType: 'sniper',
@@ -254,7 +254,7 @@ router.post('/api/weapons/seed/data', passport.authenticate('jwt', { session: fa
         },
         {
             weaponName: 'EVA-8 Auto',
-            weaponImg: './weapon_images/EVA-8_Auto.webp',
+            weaponImg: '/weapon_images/EVA-8_Auto.webp',
             weaponType: 'Shotgun',
             stats: {
                 ammoType: 'shotgun',
@@ -264,7 +264,7 @@ router.post('/api/weapons/seed/data', passport.authenticate('jwt', { session: fa
         },
         {
             weaponName: 'Mastiff Shotgun',
-            weaponImg: './weapon_images/Mastiff_Shotgun.webp',
+            weaponImg: '/weapon_images/Mastiff_Shotgun.webp',
             weaponType: 'Shotgun',
             stats: {
                 ammoType: 'shotgun',
@@ -274,7 +274,7 @@ router.post('/api/weapons/seed/data', passport.authenticate('jwt', { session: fa
         },
         {
             weaponName: 'Mozambique Shotgun',
-            weaponImg: './weapon_images/Mozambique_Shotgun.webp',
+            weaponImg: '/weapon_images/Mozambique_Shotgun.webp',
             weaponType: 'Shotgun',
             stats: {
                 ammoType: 'shotgun',
@@ -284,7 +284,7 @@ router.post('/api/weapons/seed/data', passport.authenticate('jwt', { session: fa
         },
         {
             weaponName: 'Peacekeeper',
-            weaponImg: './weapon_images/Peacekeeper.webp',
+            weaponImg: '/weapon_images/Peacekeeper.webp',
             weaponType: 'Shotgun',
             stats: {
                 ammoType: 'shotgun',
@@ -294,7 +294,7 @@ router.post('/api/weapons/seed/data', passport.authenticate('jwt', { session: fa
         },
         {
             weaponName: 'RE-45 Auto',
-            weaponImg: './weapon_images/RE-45_Auto.webp',
+            weaponImg: '/weapon_images/RE-45_Auto.webp',
             weaponType: 'Pistol',
             stats: {
                 ammoType: 'light',
@@ -304,7 +304,7 @@ router.post('/api/weapons/seed/data', passport.authenticate('jwt', { session: fa
         },
         {
             weaponName: 'P2020',
-            weaponImg: './weapon_images/P2020.webp',
+            weaponImg: '/weapon_images/P2020.webp',
             weaponType: 'Pistol',
             stats: {
                 ammoType: 'light',
@@ -314,7 +314,7 @@ router.post('/api/weapons/seed/data', passport.authenticate('jwt', { session: fa
         },
         {
             weaponName: 'Wingman',
-            weaponImg: './weapon_images/Wingman.webp',
+            weaponImg: '/weapon_images/Wingman.webp',
             weaponType: 'Pistol',
             stats: {
                 ammoType: 'heavy',
@@ -333,5 +333,8 @@ router.post('/api/weapons/seed/data', passport.authenticate('jwt', { session: fa
         }
     });
 });
+
+// USE Method to fetch an image from the backend
+router.use(express.static('public'))
 
 module.exports = router;
