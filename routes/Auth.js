@@ -31,7 +31,6 @@ router.post('/api/login', (req, res) => {
         // Check if there is a user with the entered username
         // Get password and then run bcrypt
         User.findOne({username: req.body.username}).then((user) => {
-            console.log(user)
             if (user !== null) {
                 // Use bcrypt to compare the plaintext password and encrypted password
                 bcrypt.compare(req.body.password, user.password, (error, result) => {
