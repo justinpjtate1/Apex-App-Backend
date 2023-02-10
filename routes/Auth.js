@@ -40,7 +40,7 @@ router.post('/api/login', (req, res) => {
                             id: user._id
                         };
                         // Build a JSON Web Token using the payload - This will last 300 seconds
-                        const token = jwt.sign(payload, jwtOptions.secretOrKey, { expiresIn: 300 });
+                        const token = jwt.sign(payload, jwtOptions.secretOrKey, { expiresIn: 3000 });
 
                         // Send the JSON Web Token back to the user
                         res.status(200).json({ success: true, token: token });
