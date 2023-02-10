@@ -29,12 +29,10 @@ router.post('/api/login', (req, res) => {
     // First check both a username + password has been entered
     if (req.body.username && req.body.password) {
         // Check if there is a user with the entered username
-        if (User.findOne({username: req.body.username})) {
-            console.log(User.findOne({username: req.body.username})[1])
-            console.log("1")
-            // Get password and then run bcrypt
-            User.findOne({username: req.body.username}).then((user) => {
-                console.log(user)
+        // Get password and then run bcrypt
+        User.findOne({username: req.body.username}).then((user) => {
+            console.log(user)
+            if (user !== null) {
                 // Use bcrypt to compare the plaintext password and encrypted password
                 bcrypt.compare(req.body.password, user.password, (error, result) => {
                     if (result) {
@@ -61,17 +59,14 @@ router.post('/api/login', (req, res) => {
                         res.status(500).json( { message: `Big error: ${error}` } )
                     }
                 })
-            })
-
-            
-
-        } else {
-            // If username not found, return invalid username
-            res.status(401).json( { error: {
-                name: 'InvalidDataEntry',
-                message: 'Invalid Username'
-            } } )
-        }
+            } else {
+                // If username not found, return invalid username
+                res.status(401).json( { error: {
+                    name: 'InvalidDataEntry',
+                    message: 'Invalid Username'
+                } } )
+            }
+        })
     } else {
         // If no data entered return this error
         res.status(400).json({
