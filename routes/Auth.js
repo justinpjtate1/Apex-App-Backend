@@ -43,7 +43,7 @@ router.post('/api/login', (req, res) => {
                         const token = jwt.sign(payload, jwtOptions.secretOrKey, { expiresIn: 3000 });
 
                         // Send the JSON Web Token back to the user
-                        res.status(200).json({ success: true, token: token });
+                        res.status(200).json({ success: true, token: token, user: user._id });
                     }
                     // If !resolve then return invalid password
                     if (!result) {
