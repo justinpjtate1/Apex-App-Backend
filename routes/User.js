@@ -19,7 +19,12 @@ router.get('/api/user/:userID', passport.authenticate('jwt', { session: false })
     .populate('favoriteWeapons')
     .then((user) => {
         if (user) {
-            res.status(200).json({ user: user });
+            res.status(200).json({ user: {
+                username: user.username,
+                favoriteWeapons: user.favoriteWeapons,
+                _id: user._id,
+                profileImg: user.profileImg
+            } });
         } else {
             // If cannot find a document with a matching ID
             res.status(404).json({
