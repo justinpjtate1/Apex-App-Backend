@@ -10,7 +10,8 @@ const userSchema = new mongoose.Schema({
     favoriteWeapons: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: `Weapon`
-    }]
+    }],
+    refreshTokens: [{ type: String }]
 });
 // Compile model on schema
 const User = mongoose.model('User', userSchema);
