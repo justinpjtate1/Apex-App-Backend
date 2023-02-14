@@ -33,7 +33,7 @@ const getAccessToken = (user) => {
         id: user._id
     };
     // Build a JSON Web Token using the payload - This will last 300 seconds
-    const accessToken = jwt.sign(payload, jwtOptions.secretOrKey, { expiresIn: 30 });
+    const accessToken = jwt.sign(payload, jwtOptions.secretOrKey, { expiresIn: 60 });
     const refreshToken = jwt.sign(payload, jwtOptions.refreshSecret);
     // Find out a way to store the refresh token
     return {accessToken, refreshToken}
