@@ -26,17 +26,17 @@ const { application } = require('express');
 // Instantiate a Router (mini app that only handles routes)
 const router = express.Router();
 
-//Generate Acces Token Function
-const getAccesToken = (user) => {
+//Generate Access Token Function
+const getAccessToken = (user) => {
     // Select the information we want to send to the user.
     const payload = {
         id: user._id
     };
     // Build a JSON Web Token using the payload - This will last 300 seconds
-    const token = jwt.sign(payload, jwtOptions.secretOrKey, { expiresIn: 3000 });
+    const accessToken = jwt.sign(payload, jwtOptions.secretOrKey, { expiresIn: 30 });
     const refreshToken = jwt.sign(payload, jwtOptions.refreshSecret);
     // Find out a way to store the refresh token
-    return {token, refreshToken}
+    return {accessToken, refreshToken}
 }
 
 router.post('/api/login', (req, res) => {
@@ -49,11 +49,11 @@ router.post('/api/login', (req, res) => {
                 // Use bcrypt to compare the plaintext password and encrypted password
                 bcrypt.compare(req.body.password, user.password, (error, result) => {
                     if (result) {
-                        tokens = getAccesToken(user);
+                        tokens = getAccessToken(user);
                         user.refreshTokens.push(tokens.refreshToken);
                         user.save();
                         // Send the JSON Web Token back to the user
-                        res.status(200).json({ success: true, token: tokens.token, user: user._id, refreshToken: tokens.refreshToken });
+                        res.status(200).json({ success: true, accessToken: tokens.accessToken, user: user._id, refreshToken: tokens.refreshToken });
                     }
                     // If !resolve then return invalid password
                     if (!result) {
@@ -97,8 +97,8 @@ router.post('/api/token/:id', (req, res) => {
         if (!user.refreshTokens.includes(refreshToken)) return res.status(403).json({ error: 'Invalid Refresh Token' })
         jwt.verify(refreshToken, jwtOptions.refreshSecret, (err, user) => {
             if (err) return res.status(403).json({ error: 'Failed to verify refresh token' })
-            const tokens = getAccesToken(user);
-            res.json({ accessToken: tokens.token, refreshToken: tokens.refreshToken })
+            const tokens = getAccessToken(user);
+            res.json({ accessToken: tokens.accessToken, refreshToken: tokens.refreshToken })
         });
     });
 });
@@ -110,8 +110,8 @@ router.patch('/api/logout/:id', (req,res) => {
         console.log(user);
         user.save();
         res.status(204).json({ message: 'Refresh Token Deleted' })
-    })
-})
+    });
+});
 
 //Test case
 router.get('/api/protected', passport.authenticate('jwt', { session: false }), (req, res) => {
