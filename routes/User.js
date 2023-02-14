@@ -2,11 +2,21 @@
 const express = require('express');
 const bcrypt = require('bcrypt');
 const passport = require('passport');
+const multer = require('multer');
 // Require Mongoose Model for User
 const User = require('./../models/User');
-
+const fs = require('fs')
 // Instantiate a Router (mini app that only handles routes)
 const router = express.Router();
+
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => cb(null, 'profile-uploads'),
+    filename: (req, file, cb) => cb(null, file.originalname)
+  })
+
+const upload = multer({
+    storage: storage
+})
 
 /*
 Action:        SHOW
@@ -118,6 +128,7 @@ Method:        PUT/PATCH
 URI:        /api/user/:userID
 Description:    Update user by user ID
 */
+
 router.patch('/api/user/:userID', passport.authenticate('jwt', { session: false }), (req, res) => {
     User.findById(req.params.userID)
       .then((user) => {
@@ -143,6 +154,18 @@ router.patch('/api/user/:userID', passport.authenticate('jwt', { session: false 
         res.status(500).json({ error: error });
       });
   });
+
+router.patch('/api/user/:userID/upload', passport.authenticate('jwt', { session: false }), upload.single('profileImage'), (req, res) => {
+    User.updateOne({ _id: req.params.userID }, { 
+        profileImg: {
+        data: fs.readFileSync('profile-uploads/' + req.file.filename),
+        contentType: 'image/jpeg'
+        }
+    })
+    .then(res.send("successfully uploaded"))
+    .catch((error) => console.log(error))
+    }
+)
 
 // Export the router so we can use it in the 'server.js' file
 module.exports = router;

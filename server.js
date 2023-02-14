@@ -1,6 +1,7 @@
 require('dotenv').config()
 // Require the necessary NPM packages
 const express = require('express');
+const bodyParser = require('body-parser')
 const mongoose = require('mongoose');
 const cors = require('cors');
 
@@ -36,6 +37,10 @@ const reactPort = 3000;
 
 // Middleware
 app.use(express.json());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: false}))
+
+app.use(express.urlencoded({limit: '25mb', extended: true}));
 
 // Set up CORS headers
 app.use(cors({
