@@ -6,7 +6,7 @@ const userSchema = new mongoose.Schema({
     // add default src for profileImg
     username: { type: String, required: true },
     password: { type: String, required: true },
-    profileImg: {type: String, required: false},
+    profileImg: {data: Buffer, contentType: String, required: false},
     favoriteWeapons: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: `Weapon`
