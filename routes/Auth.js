@@ -92,7 +92,6 @@ router.post('/api/token/:id', (req, res) => {
     const refreshToken = req.body.token
     
     User.findById(req.params.id).then(user => {
-        console.log(user);
         if (refreshToken == null) return res.status(401).json({ error: 'No refresh token found...' })
         if (!user.refreshTokens.includes(refreshToken)) return res.status(403).json({ error: 'Invalid Refresh Token' })
         jwt.verify(refreshToken, jwtOptions.refreshSecret, (err, user) => {
@@ -105,9 +104,7 @@ router.post('/api/token/:id', (req, res) => {
 
 router.patch('/api/logout/:id', (req,res) => {
     User.findByIdAndUpdate(req.params.id).then(user => {
-        console.log(user);
         user.refreshTokens = user.refreshTokens.filter(token => token !== req.body.token)
-        console.log(user);
         user.save();
         res.status(204).json({ message: 'Refresh Token Deleted' })
     });
