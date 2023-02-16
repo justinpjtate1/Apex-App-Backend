@@ -21,6 +21,30 @@ const upload = multer({
 /*
 Action:        SHOW
 Method:        GET
+URI:        /api/users
+Description:    Get users by username
+*/
+
+router.get('/api/user/:username', (req, res) => {
+    User.find({username: req.params.username})
+    .then((user) => {
+        if (user.length > 0) {
+            console.log(user)
+            res.status(200).json({user: user[0].username})
+        } else {
+            // Using seven characters here as all ussernames are 8-20 charas
+            res.status(404).json({user: 'no-user'})
+        }
+
+    })
+    .catch((error) => {
+        res.status(500).json( { error: error } );
+    });
+});
+
+/*
+Action:        SHOW
+Method:        GET
 URI:        /api/user/:userID
 Description:    Get user
 */
